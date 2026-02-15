@@ -1,22 +1,23 @@
 # Explanation
 
-1. Both dockerimage files have been implemented and added to `app/pinger` and `app/ponger` locations.
-2. `make run-local-kube-with-ping-pong-app` has been extended to include self-signed certs to be applied inside `default` namespace
-    - Production system would have an improved method of provisioning certificates using `cert-manager` or `external-secrets-operator` which would fetch required certifcates from external authority such as ACM.
+1. Both Docker image files have been implemented and added to `app/pinger` and `app/ponger` locations.
+2. `make run-local-kube-with-ping-pong-app` has been extended to include self-signed certs to be applied inside the `default` namespace
+    - Production system would have an improved method of provisioning certificates using `cert-manager` or `external-secrets-operator`, which would fetch required certificates from an external authority such as ACM.
 3. Application fixes applied:
     - ponger service label mismatch
-    - network policies required improvments to pinder/ponger ingress/egress on port 8080, both implemented and available in `app/ponger/manifests`
+    - network policies required improvements to pinder/ponger ingress/egress on port 8080, both implemented and available in `app/ponger/manifests`
 4. Ponger HA/resilience improvements
     - 3 replicas spread across 3 availability zones utilising topologyspread
     - rolling update policy added to allow zero downtime rotation with maxSurge set to 1
-    - utlising metrics server and HorizontalPodAutoscaler to scale the number of pods when cpu ultisation is 50%
+    - Utilising metrics server and HorizontalPodAutoscaler to scale the number of pods when CPU utilisation is 50%
     - pod disruption budget implemented to allow minAvailable: 2 pods for ponger
     - Liveness/readiness probes
-    - note pinger service could have the same setup but here I only focused on the Ponger
-5. Certificates which are added to k8s as secrets are mounted to each application as volumes at `/volumes`. Both deployment resources can be examined for that.
-6. Full setup can be re-deployed using `make run-local-kube-with-ping-pong-app` from the root directory.
+    - Note that pinger service could have the same setup, but here I only focused on the Ponger
+5. Certificates, which are added to k8s as secrets, are mounted to each application as volumes at `/certs`. Both deployment resources can be examined for that.
+6. Resource limits and requests added to both apps (good practice)
+7. Full setup can be re-deployed using `make run-local-kube-with-ping-pong-app` from the root directory.
 
-Finally, steps used to generate certificates:
+Finally, the steps used to generate certificates:
 ```
 cd certs
 # CA
