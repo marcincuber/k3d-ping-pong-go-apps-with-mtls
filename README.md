@@ -1,4 +1,4 @@
-# k3d-ping-pong-go-apps-with-mtls"
+# k3d-ping-pong-go-apps-with-mtls
 
 ## Overview
 
