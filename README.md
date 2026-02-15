@@ -1,5 +1,7 @@
 # k3d-ping-pong-go-apps-with-mtls
 
+For full solution, please see -> EXPLANATION.md
+
 ## Overview
 
 Two dummy micro services based on HTTP REST and written in Go are interacting with each other. The Ponger service has one endpoint `GET /ping` which responds with body `pong` and a `HTTP 200` success message. The Pinger service consumes the service provided by Ponger by sending requests to it in regular intervals. We provide a `Makefile` to run the services on a K3d local Kubernetes cluster. 
