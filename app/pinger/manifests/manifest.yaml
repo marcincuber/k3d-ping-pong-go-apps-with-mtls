@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pinger
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: pinger
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: pinger
+    spec:
+      containers:
+      - name: pinger
+        image: library/pinger:latest
+        imagePullPolicy: Never # required for k3d imported images
+        resources:
+          limits:
+            memory: 100Mi
+          requests:
+            memory: 100Mi
+            cpu: 100m
+        volumeMounts:
+        - name: certs
+          mountPath: /certs
+          readOnly: true
+      volumes:
+      - name: certs
+        secret:
+          secretName: client-tls

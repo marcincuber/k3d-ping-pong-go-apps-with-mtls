@@ -1,0 +1,22 @@
+[ req ]
+default_bits       = 2048
+prompt             = no
+default_md         = sha256
+req_extensions     = req_ext
+distinguished_name = dn
+
+[ dn ]
+CN = server.default.svc.cluster.local
+
+[ req_ext ]
+subjectAltName = @alt_names
+
+[ alt_names ]
+DNS.1 = server
+DNS.2 = server.default
+DNS.3 = server.default.svc
+DNS.4 = server.default.svc.cluster.local
+DNS.5 = pong
+DNS.6 = pong.default
+DNS.7 = pong.default.svc
+DNS.8 = pong.default.svc.cluster.local

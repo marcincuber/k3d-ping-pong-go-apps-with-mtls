@@ -1,0 +1,29 @@
+SHELL := /bin/bash -o pipefail
+KUBECTL := kubectl --context k3d-cluster
+
+.PHONY: create-k3d-cluster
+.PHONY: delete-local-kube-cluster
+.PHONY: build-pinger
+.PHONY: run-local-kube-with-ping-pong-app
+
+create-k3d-cluster: delete-local-kube-cluster
+	@which k3d >> /dev/null || echo "k3d must be installed to create local Kubernetes cluster\n==> visit https://k3d.io/ \n\n wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash" \
+	&& k3d cluster create cluster --k3s-arg '--disable=servicelb@server:0' --k3s-arg '--disable=traefik@server:0' --agents 2
+
+delete-local-kube-cluster:
+	@echo "Deleting existing Kubernetes cluster..." && k3d cluster delete cluster
+
+build-pinger:
+	docker build -t pinger:latest app/pinger
+
+build-ponger:
+	docker build -t ponger:latest app/ponger
+
+run-local-kube-with-ping-pong-app: build-pinger build-ponger create-k3d-cluster
+	k3d image import pinger:latest --cluster cluster \
+	&& k3d image import ponger:latest --cluster cluster \
+	&& ${KUBECTL} create \
+	  -f app/ponger/manifests \
+	  -f app/pinger/manifests \
+    && cd certs && ./kubectl-cmds.sh \
+	&& echo "Kubernetes cluster available on Kubernetes context k3d-cluster"
