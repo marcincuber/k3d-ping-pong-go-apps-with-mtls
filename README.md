@@ -1,6 +1,6 @@
 # k3d-ping-pong-go-apps-with-mtls
 
-For full solution, please see -> EXPLANATION.md
+For full solution, please see -> [EXPLANATION.md](EXPLANATION.md)
 
 ## Overview
 
