@@ -9,11 +9,12 @@
 4. Ponger HA/resilience improvements
     - 3 replicas spread across 3 availability zones utilising topologyspread
     - rolling update policy added to allow zero downtime rotation with maxSurge set to 1
-    - utlising metrics server and HorizontalPodAutoscaler to scale amount of pods when cpu ultization is 50%
+    - utlising metrics server and HorizontalPodAutoscaler to scale the number of pods when cpu ultisation is 50%
     - pod disruption budget implemented to allow minAvailable: 2 pods for ponger
     - Liveness/readiness probes
     - note pinger service could have the same setup but here I only focused on the Ponger
 5. Certificates which are added to k8s as secrets are mounted to each application as volumes at `/volumes`. Both deployment resources can be examined for that.
+6. Full setup can be re-deployed using `make run-local-kube-with-ping-pong-app` from the root directory.
 
 Finally, steps used to generate certificates:
 ```
