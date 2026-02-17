@@ -50,13 +50,5 @@ For the purposes of this assignment, we do not require a CA-signed certificate, 
 
 ### Production Ready
 
-Think about what else you would do to make this service production ready. Feel free to implement them, or include suggestions when returning the test.
+Think about what else you would do to make this service production-ready. Feel free to implement them, or include suggestions when returning the test.
 
-## Time
-We haven’t set a time limit for this test.  We would like you to spend the time you need to hand something in that you’re happy with - at the same time we don’t want you to spend hours on end either.  As a guideline, candidates usually take around two to three hours on average.
-
-## Notes
-An important part of this test is to understand your thinking. Please include notes on how you found the tech test, and any information we may need to run it, in the repository before submitting. Either include your notes as part of this read me, or create a new `.md` file.
-
-## Submitting
-Share a private github repo with the user `starlingtechtest` - ideally we’d like to avoid lots of public solutions.  Please include your name in the repository description, if it is not obvious from your Github profile, so we know whose code we are looking at!
