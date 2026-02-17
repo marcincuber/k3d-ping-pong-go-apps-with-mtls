@@ -17,6 +17,9 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: ponger
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "2112"
     spec:
       topologySpreadConstraints:
       - maxSkew: 1
@@ -51,6 +54,9 @@ spec:
           periodSeconds: 3
         ports:
         - containerPort: 8080
+          name: http
+        - containerPort: 2112
+          name: metrics
         volumeMounts:
         - name: certs
           mountPath: /certs
