@@ -24,10 +24,6 @@ CGO_ENABLED=0 GOARCH=amd64 GOOS=linux go build -a --installsuffix cgo --ldflags=
 make run-local-kube-with-ping-pong-app
 ```
 
-3) Are the microservices up and running ?
-
-4) If not, fix the issues and provide details about your findings.
-
 ### Optional Challenges
 
 Now you have a working pair of services, how can you improve it? Think of ideas like adding HTTPs, mTLS, a Prometheus server to collect metrics, or any other tools you have implemented in the past. For setting up HTTPs the `ponger` service can be provided with a certificate path in its configuration file:
