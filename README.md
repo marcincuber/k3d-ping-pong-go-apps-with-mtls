@@ -2,7 +2,7 @@
 
 For full solution, please see -> [EXPLANATION.md](EXPLANATION.md)
 
-Note that this technical challenge was for the Starling bank platform engineering role. Unfortunately, my explanation above wasn't good enough. So if you decide to use it in any shape or form, ensure that chatGPT or Claude generates tons of documentation to justify the selection of load balancers, pod disruption budgets, and horizontal pod autoscalers resources.
+Just so you know, this technical challenge was for the Starling bank platform engineering role. Unfortunately, my explanation above wasn't good enough. So if you decide to use it in any shape or form, please make sure that ChatGPT or Claude generates tons of documentation to explain why load balancers, pod disruption budgets, and horizontal pod autoscalers are selected. Example doc -> [chatgpt-explanation.md](chatgpt-explanation.md)
 
 ## Overview
 
