@@ -45,8 +45,3 @@ For the purposes of this assignment, we do not require a CA-signed certificate, 
     url: https://localhost:8080
     acceptCert: /path/to/cert
 ```
-
-### Production Ready
-
-Think about what else you would do to make this service production-ready. Feel free to implement them, or include suggestions when returning the test.
-
